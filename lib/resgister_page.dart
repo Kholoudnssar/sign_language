@@ -76,7 +76,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ],
                 ),
 
-                ///////////////new
+                /////////////////new
                 CustomFormTextField(
                   onChanged: (data) {
                     firstname = data;
