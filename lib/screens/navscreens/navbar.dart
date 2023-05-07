@@ -12,7 +12,7 @@ class botnavbar extends StatefulWidget {
 class _botnavbarState extends State<botnavbar> {
   int currentIndexy=0;
   List screens=[
-   Myhome(),profile()
+   Myhome(),const profile()
   ];
   @override
   Widget build(BuildContext context) {
