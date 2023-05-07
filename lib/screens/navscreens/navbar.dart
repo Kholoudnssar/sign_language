@@ -12,7 +12,7 @@ class botnavbar extends StatefulWidget {
 class _botnavbarState extends State<botnavbar> {
   int currentIndexy=0;
   List screens=[
-   Myhome(),camera(),profile()
+   Myhome(),profile()
   ];
   @override
   Widget build(BuildContext context) {
@@ -25,10 +25,7 @@ class _botnavbarState extends State<botnavbar> {
              label: 'home',
              ),
              
-             BottomNavigationBarItem(
-            icon:Icon(Icons.camera_enhance_outlined),
-             label: 'camera',
-             ),
+             
              BottomNavigationBarItem(
             icon:Icon(Icons.account_circle),
              label: 'profile',
