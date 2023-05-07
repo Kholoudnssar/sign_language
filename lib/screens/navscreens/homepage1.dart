@@ -19,7 +19,7 @@ class _MyhomeState extends State<Myhome> {
         elevation: 0.0,
         title:const Text('Interpreter'),
         titleTextStyle: const TextStyle(
-          color: Colors.black,
+          color: Colors.black26,
           fontSize: 30.0,
           fontWeight: FontWeight.w400,
         ),

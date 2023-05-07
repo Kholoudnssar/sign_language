@@ -1,5 +1,5 @@
 import 'package:finalprojectnew/screens/navscreens/camera.dart';
-import 'package:finalprojectnew/screens/navscreens/homepage.dart';
+import 'package:finalprojectnew/screens/navscreens/homepage1.dart';
 import 'package:finalprojectnew/screens/navscreens/profile/profile.dart';
 import 'package:flutter/material.dart';
 class botnavbar extends StatefulWidget {
