@@ -15,11 +15,11 @@ class _MyhomeState extends State<Myhome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.indigo,
+        backgroundColor: Colors.blue,
         elevation: 0.0,
         title:const Text('Interpreter'),
         titleTextStyle: const TextStyle(
-          color: Colors.black26,
+          color: Colors.black,
           fontSize: 30.0,
           fontWeight: FontWeight.w400,
         ),
@@ -50,7 +50,7 @@ class _MyhomeState extends State<Myhome> {
                 height: 480,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: Colors.grey,
+                  color: Colors.grey[50],
                   border: Border.all(width: 8,color: Colors.black12),
                   borderRadius: BorderRadius.circular(12.0),
                 ),
