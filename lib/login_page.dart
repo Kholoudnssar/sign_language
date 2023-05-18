@@ -1,6 +1,3 @@
-import 'dart:ffi';
-import 'dart:math';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
@@ -10,6 +7,7 @@ import 'package:sign_language_app/widgets/custom_text_field.dart';
 
 import 'constants.dart';
 import 'helper/show_snack_bar.dart';
+
 
 
 class LoginPage extends StatefulWidget {
@@ -157,4 +155,8 @@ class _LoginPageState extends State<LoginPage> {
     UserCredential user = await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email!, password: password!);
   }
+
+
+  //////////////////////////////////////////////////////////////////////
+
 }

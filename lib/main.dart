@@ -1,7 +1,7 @@
-import 'package:finalprojectnew/screens/navscreens/navbar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:sign_language_app/resgister_page.dart';
+import 'package:sign_language_app/screens/navscreens/navbar.dart';
 
 import 'login_page.dart';
 
@@ -24,11 +24,12 @@ class MyApp extends StatelessWidget {
         
         primarySwatch: Colors.blue,
       ),
-      home: botnavbar(),      
-      initialRoute: LoginPage.id,
+      // home: botnavbar(),
+      initialRoute: Botnavbar.roudeName,
       routes: {
         LoginPage.id:(context)=>LoginPage(),
         RegisterPage.id:(context)=>RegisterPage(),
+        Botnavbar.roudeName:(context)=>Botnavbar()
 
       },
     );

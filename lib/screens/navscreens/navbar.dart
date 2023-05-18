@@ -1,18 +1,18 @@
-import 'package:finalprojectnew/screens/navscreens/camera.dart';
-import 'package:finalprojectnew/screens/navscreens/homepage1.dart';
-import 'package:finalprojectnew/screens/navscreens/profile/profile.dart';
-import 'package:flutter/material.dart';
-class botnavbar extends StatefulWidget {
-  const botnavbar({super.key});
 
+import 'package:flutter/material.dart';
+import 'package:sign_language_app/screens/navscreens/profile/profile.dart';
+
+import 'homepage.dart';
+class Botnavbar extends StatefulWidget {
+static const String roudeName='Nav';
   @override
-  State<botnavbar> createState() => _botnavbarState();
+  State<Botnavbar> createState() => _BotnavbarState();
 }
 
-class _botnavbarState extends State<botnavbar> {
+class _BotnavbarState extends State<Botnavbar> {
   int currentIndexy=0;
   List screens=[
-   Myhome(),const profile()
+   MyHome(),const profile()
   ];
   @override
   Widget build(BuildContext context) {
