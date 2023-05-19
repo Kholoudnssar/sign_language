@@ -2,8 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:sign_language_app/resgister_page.dart';
+import 'package:sign_language_app/screens/navscreens/navbar.dart';
 import 'package:sign_language_app/widgets/custom_button.dart';
 import 'package:sign_language_app/widgets/custom_text_field.dart';
+import 'package:sign_language_app/widgets/resetPassword.dart';
 
 import 'constants.dart';
 import 'helper/show_snack_bar.dart';
@@ -99,8 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                       setState(() {});
                       try {
                         await loginUser();
-                        // Navigator.pushNamed(context, ChatPage.id,
-                        //     arguments: email);
+                       Navigator.pushNamed(context, Botnavbar.roudeName);
                       } on FirebaseAuthException catch (ex) {
                         if (ex.code == 'user-not-found') {
                           showSnackBar(context, 'user not found');
@@ -136,6 +137,29 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       child: Text(
                         '  Register',
+                        style: TextStyle(
+                          color: Color(0xffC7EDE6),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 40),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Forget Password?',
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, ResetPassword.id);
+                      },
+                      child: Text(
+                        '  reset',
                         style: TextStyle(
                           color: Color(0xffC7EDE6),
                         ),
