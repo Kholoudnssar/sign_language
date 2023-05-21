@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
             child: ListView(
               children: [
                 SizedBox(
-                    height: MediaQuery.of(context).size.height*0.05,
+                  height: MediaQuery.of(context).size.height*0.05,
                 ),
                 Image.asset(
                   'assets/images/logo1.png',
@@ -102,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                       setState(() {});
                       try {
                         await loginUser();
-                       Navigator.pushNamed(context, MyHome.roudeName);
+                        Navigator.pushNamed(context, MyHome.roudeName);
                       } on FirebaseAuthException catch (ex) {
                         if (ex.code == 'user-not-found') {
                           showSnackBar(context, 'user not found');
@@ -182,6 +182,6 @@ class _LoginPageState extends State<LoginPage> {
   }
 
 
-  //////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 
 }

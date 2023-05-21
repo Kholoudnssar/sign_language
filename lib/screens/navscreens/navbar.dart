@@ -53,7 +53,7 @@ class NavigationDrawerWidget extends StatelessWidget {
                   await Logout();
                   Navigator.pushNamed(context, LoginPage.id);
                 }
-                // onClicked:() => selectedItem(context,2)
+              // onClicked:() => selectedItem(context,2)
             ),
           ],
         ),
@@ -94,10 +94,10 @@ class NavigationDrawerWidget extends StatelessWidget {
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyHome(),
         ));
         break;
-      // case 2:
-      //   Navigator.of(context).push(MaterialPageRoute(builder: (context) => logout(),
-      //   ));
-      //   break;
+    // case 2:
+    //   Navigator.of(context).push(MaterialPageRoute(builder: (context) => logout(),
+    //   ));
+    //   break;
     }
   }
 
