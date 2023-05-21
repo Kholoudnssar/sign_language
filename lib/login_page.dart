@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:sign_language_app/resgister_page.dart';
+import 'package:sign_language_app/screens/navscreens/homepage.dart';
 import 'package:sign_language_app/screens/navscreens/navbar.dart';
 import 'package:sign_language_app/widgets/custom_button.dart';
 import 'package:sign_language_app/widgets/custom_text_field.dart';
@@ -33,17 +34,17 @@ class _LoginPageState extends State<LoginPage> {
       child: Scaffold(
         backgroundColor: kPrimaryColor,
         body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Form(
             key: formKey,
             child: ListView(
               children: [
                 SizedBox(
-                  height: 75,
+                    height: MediaQuery.of(context).size.height*0.05,
                 ),
                 Image.asset(
                   'assets/images/logo1.png',
-                  height: 100,
+                  height: MediaQuery.of(context).size.height*0.14,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
                     Text(
                       'interpreter',
                       style: TextStyle(
-                        fontSize: 32,
+                        fontSize: 30,
                         color: Colors.white,
                         fontFamily: 'pacifico',
                       ),
@@ -59,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
                 SizedBox(
-                  height: 75,
+                  height: MediaQuery.of(context).size.height*0.05,
                 ),
                 Row(
                   children: [
@@ -82,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                   hintText: 'Email',
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
                 CustomFormTextField(
                   obscureText: true,
@@ -101,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                       setState(() {});
                       try {
                         await loginUser();
-                       Navigator.pushNamed(context, Botnavbar.roudeName);
+                       Navigator.pushNamed(context, MyHome.roudeName);
                       } on FirebaseAuthException catch (ex) {
                         if (ex.code == 'user-not-found') {
                           showSnackBar(context, 'user not found');

@@ -4,6 +4,7 @@ import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:sign_language_app/constants.dart';
 import 'package:sign_language_app/datdbase/database_utils.dart';
 import 'package:sign_language_app/models/My_User.dart';
+import 'package:sign_language_app/screens/navscreens/homepage.dart';
 import 'package:sign_language_app/screens/navscreens/navbar.dart';
 import 'package:sign_language_app/widgets/custom_button.dart';
 import 'package:sign_language_app/widgets/custom_text_field.dart';
@@ -123,7 +124,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       setState(() {});
                       try {
                         await registerUser();
-                        Navigator.pushNamed(context, Botnavbar.roudeName);
+                        Navigator.pushNamed(context, MyHome.roudeName);
                         // Navigator.pushNamed(context, ChatPage.id);
                       } on FirebaseAuthException catch (ex) {
                         if (ex.code == 'weak-password') {
