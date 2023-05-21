@@ -11,7 +11,7 @@ import '../../login_page.dart';
 import 'homepage.dart';
 
 class NavigationDrawerWidget extends StatelessWidget {
-  final Padding = EdgeInsets.symmetric(horizontal: 20);
+  // final Padding = EdgeInsets.only(left: 10);
 
 
   @override
@@ -20,10 +20,10 @@ class NavigationDrawerWidget extends StatelessWidget {
       child: Material(
         color: Colors.blue [300],
         child: ListView(
-          padding: Padding,
+          // padding: Padding,
           children: [
             ListTile(
-              title: Text('Deaf Speak',
+              title: Text('SignBridge',
                 style: TextStyle(color: Colors.black,
                     fontFamily: 'pacifico',
                     fontSize: 30),
@@ -53,7 +53,7 @@ class NavigationDrawerWidget extends StatelessWidget {
                   await Logout();
                   Navigator.pushNamed(context, LoginPage.id);
                 }
-                // onClicked:() => selectedItem(context,2)
+              // onClicked:() => selectedItem(context,2)
             ),
           ],
         ),
@@ -94,10 +94,10 @@ class NavigationDrawerWidget extends StatelessWidget {
         Navigator.of(context).push(MaterialPageRoute(builder: (context) => MyHome(),
         ));
         break;
-      // case 2:
-      //   Navigator.of(context).push(MaterialPageRoute(builder: (context) => logout(),
-      //   ));
-      //   break;
+    // case 2:
+    //   Navigator.of(context).push(MaterialPageRoute(builder: (context) => logout(),
+    //   ));
+    //   break;
     }
   }
 

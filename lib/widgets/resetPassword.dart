@@ -55,7 +55,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                   email = data;
                 },
                 hintText: 'Email',
-                 // Icon(Icons.email, color: Colors.white),
+                // Icon(Icons.email, color: Colors.white),
               ),
               SizedBox(height: 30),
               ElevatedButton(

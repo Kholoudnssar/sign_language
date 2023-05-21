@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
     return ModalProgressHUD(
       inAsyncCall: isLoading,
       child: Scaffold(
-        backgroundColor: kPrimaryColor,
+        backgroundColor:Colors. blue[200] ,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Form(
@@ -40,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
             child: ListView(
               children: [
                 SizedBox(
-                    height: MediaQuery.of(context).size.height*0.05,
+                  height: MediaQuery.of(context).size.height*0.05,
                 ),
                 Image.asset(
                   'assets/images/logo1.png',
@@ -50,10 +50,10 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'interpreter',
+                      'SignBridge',
                       style: TextStyle(
                         fontSize: 30,
-                        color: Colors.white,
+                        color: Colors.black,
                         fontFamily: 'pacifico',
                       ),
                     ),
@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                       'LOGIN',
                       style: TextStyle(
                         fontSize: 24,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                   ],
@@ -77,6 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 20,
                 ),
                 CustomFormTextField(
+
                   onChanged: (data) {
                     email = data;
                   },
@@ -102,7 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                       setState(() {});
                       try {
                         await loginUser();
-                       Navigator.pushNamed(context, MyHome.roudeName);
+                        Navigator.pushNamed(context, MyHome.roudeName);
                       } on FirebaseAuthException catch (ex) {
                         if (ex.code == 'user-not-found') {
                           showSnackBar(context, 'user not found');
@@ -182,6 +183,6 @@ class _LoginPageState extends State<LoginPage> {
   }
 
 
-  //////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 
 }
