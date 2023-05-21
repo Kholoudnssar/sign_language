@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:sign_language_app/resgister_page.dart';
+import 'package:sign_language_app/screens/navscreens/homepage.dart';
 import 'package:sign_language_app/screens/navscreens/navbar.dart';
 import 'package:sign_language_app/widgets/resetPassword.dart';
 
@@ -30,12 +31,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: botnavbar(),
-      initialRoute: firbaseuser == null ? LoginPage.id  :Botnavbar.roudeName,
+      initialRoute: firbaseuser == null ? LoginPage.id  :MyHome.roudeName,
       routes: {
          ResetPassword.id:(context)=>ResetPassword(),
         LoginPage.id:(context)=>LoginPage(),
         RegisterPage.id:(context)=>RegisterPage(),
-        Botnavbar.roudeName:(context)=>Botnavbar()
+        MyHome.roudeName:(context)=>MyHome()
 
       },
     );

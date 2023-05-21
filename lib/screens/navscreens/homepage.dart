@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 
+import 'navbar.dart';
 import 'profile/image_view_screen.dart';
 
 class MyHome extends StatefulWidget {
   const MyHome({Key? key}) : super(key: key);
+  static const String roudeName='ff';
 
   @override
   State<MyHome> createState() => _MyHomeState();
@@ -20,8 +22,14 @@ class _MyHomeState extends State<MyHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: NavigationDrawerWidget(),
       appBar: AppBar(
-        title: const Text('INTERPRETER'),
+        title: const Text('Deaf Speak'
+            , style: TextStyle(color: Colors.black,
+            fontFamily: 'pacifico',
+            fontSize: 25),
+        ),
+
       ),
       body: Center(
         child: Column(
@@ -29,22 +37,51 @@ class _MyHomeState extends State<MyHome> {
           children: [
             if (imageFile != null)
               Container(
-                width: 300,
-                height: 300,
+                width: 640,
+                height: 480,
+                alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: FileImage(imageFile!),
-                    fit: BoxFit.cover,
-                  ),
+                  color: Colors.grey,
+                  image: DecorationImage(image: FileImage(imageFile!),fit: BoxFit.cover),
+                  border: Border.all(width: 8,color: Colors.black12),
+                  borderRadius: BorderRadius.circular(12.0),
                 ),
+
               )
             else
-              const Icon(Icons.image, size: 150),
-            ElevatedButton(
-              onPressed: () {
-                captureImage();
-              },
-              child: const Text('Capture Image'),
+              Container(
+                width: 640,
+                height: 480,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Colors.grey[50],
+                  border: Border.all(width: 8,color: Colors.black12),
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: const Text('image should appear here',style: TextStyle(fontSize: 26),),
+              ),
+            Row(
+              children: [
+                Expanded(
+                    child: ElevatedButton(
+                        onPressed: () => captureImage(source: ImageSource.camera),
+                        child: const Text('Capture Image',style: TextStyle(fontSize: 18),
+                        )
+                    )
+                ),
+
+                const SizedBox( width: 20,),
+
+
+                Expanded(
+                    child: ElevatedButton(
+                        onPressed: () => captureImage(source: ImageSource.gallery),
+                        child: const Text('Select Image',style: TextStyle(fontSize: 18),
+                        )
+                    )
+                ),
+
+              ],
             ),
             const SizedBox(height: 20),
             Text(resultText),
@@ -67,9 +104,9 @@ class _MyHomeState extends State<MyHome> {
     );
   }
 
-  Future<void> captureImage() async {
+  Future<void> captureImage({required ImageSource source}) async {
     final picker = ImagePicker();
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    final pickedFile = await picker.getImage(source: source);
 
     if (pickedFile != null) {
       setState(() {
