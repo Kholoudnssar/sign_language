@@ -28,12 +28,12 @@ class _MyHomeState extends State<MyHome> {
     return Scaffold(
       drawer: NavigationDrawerWidget(),
       appBar: AppBar(
-        title: const Text('Deaf Speak'
+        title: const Text('SignBridge'
           , style: TextStyle(color: Colors.black,
               fontFamily: 'pacifico',
               fontSize: 25),
         ),
-
+          backgroundColor: Colors.blue [300] ,
       ),
       body: Padding(
         padding: const EdgeInsets.all(11.0),
@@ -54,23 +54,34 @@ class _MyHomeState extends State<MyHome> {
 
               )
             else
-              Container(
-                width: wedith*0.9,
-                height: hight*0.6,
-                alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: Colors.grey[50],
-                  border: Border.all(width: 8,color: Colors.black12),
-                  borderRadius: BorderRadius.circular(12.0),
+              Padding(
+                padding: const EdgeInsets.only(top:45),
+                child: Container(
+                  width: wedith*0.9,
+                  height: hight*0.6,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: Colors.grey[50],
+                    border: Border.all(width: 8,color: Colors.black12),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  child: const Text('image should appear here',
+                    style: TextStyle(fontSize: 22),),
                 ),
-                child: const Text('image should appear here',style: TextStyle(fontSize: 26),),
               ),
+            Spacer(),
             Row(
               children: [
                 Expanded(
                     child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue[300], // Background color
+                        ),
                         onPressed: () => captureImage(source: ImageSource.camera),
-                        child: const Text('Capture Image',style: TextStyle(fontSize: 18),
+                        child: const Text('Capture',
+                          style: TextStyle(color: Colors.black,
+                              fontFamily: 'pacifico',
+                              fontSize: 23),
                         )
                     )
                 ),
@@ -80,8 +91,14 @@ class _MyHomeState extends State<MyHome> {
 
                 Expanded(
                     child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue[300], // Background color
+                        ),
                         onPressed: () => captureImage(source: ImageSource.gallery),
-                        child: const Text('Select Image',style: TextStyle(fontSize: 18),
+                        child: const Text('upload',
+                          style: TextStyle(color: Colors.black,
+                              fontFamily: 'pacifico',
+                              fontSize: 23),
                         )
                     )
                 ),
@@ -95,14 +112,21 @@ class _MyHomeState extends State<MyHome> {
 
               visible: (image_url != null),
               child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blue[300], // Background color
+                  ),
                 onPressed: (){
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => ImageViewScreen(imageUrl: image_url!))
                   );
                 },
-                child: Text("View Image Screen"),
+                child: Text("View result " ,
+                         style: TextStyle(color: Colors.black,
+                                fontFamily: 'pacifico',
+                          fontSize: 23
+                         ),
+                       )),
               ),
-            )
           ],
         ),
       ),
@@ -126,7 +150,7 @@ class _MyHomeState extends State<MyHome> {
   Future<void> uploadImage(File imageFile) async {
     try {
       var request = http.MultipartRequest('POST', Uri.parse(
-          'http://graduation-asr.westeurope.cloudapp.azure.com:8000/'));
+          'http://graduation-asr.westeurope.cloudapp.azure.com'));
       print(1);
       request.files.add(
           await http.MultipartFile.fromPath('image', '${imageFile.path}'));

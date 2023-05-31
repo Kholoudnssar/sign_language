@@ -35,7 +35,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return ModalProgressHUD(
       inAsyncCall: isLoading,
       child: Scaffold(
-        backgroundColor: kPrimaryColor,
+        backgroundColor: Colors.blue[200],
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Form(
@@ -53,10 +53,10 @@ class _RegisterPageState extends State<RegisterPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'interpreter',
+                      'SignBridge',
                       style: TextStyle(
                         fontSize: 32,
-                        color: Colors.white,
+                        color: Colors.black,
                         fontFamily: 'pacifico',
                       ),
                     ),
@@ -71,7 +71,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       'REGISTER',
                       style: TextStyle(
                         fontSize: 24,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                   ],

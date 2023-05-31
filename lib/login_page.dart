@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
     return ModalProgressHUD(
       inAsyncCall: isLoading,
       child: Scaffold(
-        backgroundColor: kPrimaryColor,
+        backgroundColor:Colors. blue[200] ,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Form(
@@ -50,10 +50,10 @@ class _LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'interpreter',
+                      'SignBridge',
                       style: TextStyle(
                         fontSize: 30,
-                        color: Colors.white,
+                        color: Colors.black,
                         fontFamily: 'pacifico',
                       ),
                     ),
@@ -68,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                       'LOGIN',
                       style: TextStyle(
                         fontSize: 24,
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                   ],
@@ -77,6 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 20,
                 ),
                 CustomFormTextField(
+
                   onChanged: (data) {
                     email = data;
                   },
