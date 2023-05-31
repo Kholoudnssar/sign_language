@@ -26,7 +26,7 @@ class WelcomePage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height / 1.6,
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: Colors.blue[300],
                   borderRadius:
                   BorderRadius.only(bottomRight: Radius.circular(70)),
                 ),
@@ -48,7 +48,7 @@ class WelcomePage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height / 2.666,
                 decoration: BoxDecoration(
-                    color: Colors.blue
+                    color: Colors.blue[300]
                 ),
 
               ),
@@ -58,21 +58,21 @@ class WelcomePage extends StatelessWidget {
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height / 2.666,
-                padding: EdgeInsets.only(top: 40,bottom: 30),
+                padding: EdgeInsets.only(top: 40,bottom: 0),
                 decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(70))
                 ),
                 child: Column(
                   children: [
-                    Text('welcome to Deaf Speak',
+                    Text('welcome to SignBridge',
                       style: TextStyle(fontSize:25,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Parisienne' ),
                     ),
-                    SizedBox(height: 15),
+                    SizedBox(height: 10),
                     Padding(padding: EdgeInsets.symmetric(horizontal: 40),
-                        child: Text('This application presents how to learn Arabic Alphabet Sign Language ArSL. It can provide an opportunity to communicate with deaf or mute people.',
+                        child: Text('This application presents how to learn Arabic Alphabet Sign Language (ArSL). It can provide an opportunity to communicate with deaf or dumb people.',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 18,
@@ -80,7 +80,7 @@ class WelcomePage extends StatelessWidget {
                           ),
                         )
                     ),
-                    SizedBox(height: 30),
+                    SizedBox(height: 10),
                     Material(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(10),
