@@ -35,7 +35,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return ModalProgressHUD(
       inAsyncCall: isLoading,
       child: Scaffold(
-        backgroundColor: Colors.blue[200],
+        backgroundColor: Color.fromARGB(255, 254, 253, 241),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Form(
@@ -43,7 +43,7 @@ class _RegisterPageState extends State<RegisterPage> {
             child: ListView(
               children: [
                 SizedBox(
-                  height: 75,
+                  height:MediaQuery.of(context).size.height*0.05,
                 ),
                 Image.asset(
                   'assets/images/logo1.png',
@@ -56,47 +56,47 @@ class _RegisterPageState extends State<RegisterPage> {
                       'SignBridge',
                       style: TextStyle(
                         fontSize: 32,
-                        color: Colors.black,
+                        color: Color.fromARGB(255, 120, 172, 182),
                         fontFamily: 'pacifico',
                       ),
                     ),
                   ],
                 ),
                 SizedBox(
-                  height: 100,
+                 height:MediaQuery.of(context).size.height*0.05,
                 ),
                 Row(
                   children: [
                     Text(
                       'REGISTER',
                       style: TextStyle(
-                        fontSize: 24,
-                        color: Colors.black,
+                        fontSize: 28,
+                        color: Color.fromARGB(255, 85, 133, 145),
                       ),
                     ),
                   ],
                 ),
 
-                ////////
-                //
-                // /////new
+                SizedBox(
+                  height: MediaQuery.of(context).size.height*0.01,
+                ),
                 CustomFormTextField(
                   onChanged: (data) {
                     firstname = data;
                   },
-                  hintText: 'first name',
+                  hintText: 'First name',
                 ),
                 SizedBox(
-                  height: 10,
+                  height: MediaQuery.of(context).size.height*0.01,
                 ),
                 CustomFormTextField(
                   onChanged: (data) {
                     secondname = data;
                   },
-                  hintText: 'second name',
+                  hintText: 'Laste name',
                 ),
                 SizedBox(
-                  height: 20,
+                  height: MediaQuery.of(context).size.height*0.01,
                 ),
                 //////////////////////////////////////
                 CustomFormTextField(
@@ -106,7 +106,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   hintText: 'Email',
                 ),
                 SizedBox(
-                  height: 10,
+                  height: MediaQuery.of(context).size.height*0.01,
                 ),
                 CustomFormTextField(
                   onChanged: (data) {
@@ -115,7 +115,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   hintText: 'Password',
                 ),
                 SizedBox(
-                  height: 20,
+                  height: MediaQuery.of(context).size.height*0.03,
                 ),
                 CustomButon(
                   onTap: () async {
@@ -151,7 +151,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     Text(
                       'already have an account?',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                     GestureDetector(
@@ -161,7 +161,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Text(
                         '  Login',
                         style: TextStyle(
-                          color: Color(0xffC7EDE6),
+                          color:  Color.fromARGB(255, 120, 172, 182),
                         ),
                       ),
                     ),

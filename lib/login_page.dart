@@ -32,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
     return ModalProgressHUD(
       inAsyncCall: isLoading,
       child: Scaffold(
-        backgroundColor:Colors. blue[200] ,
+        backgroundColor:Color.fromARGB(255, 254, 253, 241),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Form(
@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                       'SignBridge',
                       style: TextStyle(
                         fontSize: 30,
-                        color: Colors.black,
+                        color: Color.fromARGB(255, 120, 172, 182),
                         fontFamily: 'pacifico',
                       ),
                     ),
@@ -67,15 +67,15 @@ class _LoginPageState extends State<LoginPage> {
                     Text(
                       'LOGIN',
                       style: TextStyle(
-                        fontSize: 24,
-                        color: Colors.black,
+                        fontSize: 28,
+                        color: Color.fromARGB(255, 85, 133, 145),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height*0.01,
+            ),
                 CustomFormTextField(
 
                   onChanged: (data) {
@@ -120,6 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                     } else {}
                   },
                   text: 'LOGIN',
+
                 ),
                 SizedBox(
                   height: 10,
@@ -130,7 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                     Text(
                       'dont\'t have an account?',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                     GestureDetector(
@@ -140,7 +141,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Text(
                         '  Register',
                         style: TextStyle(
-                          color: Color(0xffC7EDE6),
+                          color:  Color.fromARGB(255, 120, 172, 182),
                         ),
                       ),
                     ),
@@ -153,7 +154,7 @@ class _LoginPageState extends State<LoginPage> {
                     Text(
                       'Forget Password?',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black,
                       ),
                     ),
                     GestureDetector(
@@ -163,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Text(
                         '  reset',
                         style: TextStyle(
-                          color: Color(0xffC7EDE6),
+                          color:  Color.fromARGB(255, 120, 172, 182),
                         ),
                       ),
                     ),

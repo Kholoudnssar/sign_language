@@ -18,7 +18,7 @@ class WelcomePage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height / 1.6,
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Color.fromARGB(255, 254, 253, 241),  //Background color to paragraph
                 ),
 
               ),
@@ -26,7 +26,7 @@ class WelcomePage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height / 1.6,
                 decoration: BoxDecoration(
-                  color: Colors.blue[300],
+                  color: Color.fromARGB(255, 120, 172, 182), //frame color to image
                   borderRadius:
                   BorderRadius.only(bottomRight: Radius.circular(70)),
                 ),
@@ -48,7 +48,7 @@ class WelcomePage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height / 2.666,
                 decoration: BoxDecoration(
-                    color: Colors.blue[300]
+                    color: Color.fromARGB(255, 120, 172, 182) //frame color to image
                 ),
 
               ),
@@ -60,15 +60,16 @@ class WelcomePage extends StatelessWidget {
                 height: MediaQuery.of(context).size.height / 2.666,
                 padding: EdgeInsets.only(top: 40,bottom: 0),
                 decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Color.fromARGB(255, 254, 253, 241), //Background color to paragraph
                     borderRadius: BorderRadius.only(topLeft: Radius.circular(70))
                 ),
                 child: Column(
                   children: [
-                    Text('welcome to SignBridge',
+                    Text('Welcome to SignBridge',
                       style: TextStyle(fontSize:25,
                           fontWeight: FontWeight.bold,
-                          fontFamily: 'Parisienne' ),
+                          color: Color.fromARGB(255, 53, 86,95 ).withOpacity(0.6), //color to text
+                          fontFamily: 'pacifico' ),
                     ),
                     SizedBox(height: 10),
                     Padding(padding: EdgeInsets.symmetric(horizontal: 40),
@@ -76,13 +77,13 @@ class WelcomePage extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: 18,
-                              color: Colors.black.withOpacity(0.6)
+                              color: Color.fromARGB(255, 53, 86,95 ).withOpacity(0.6) //color to text
                           ),
                         )
                     ),
                     SizedBox(height: 10),
                     Material(
-                      color: Colors.blue,
+                      color: Color.fromARGB(255, 85, 133, 145), //color for buttom
                       borderRadius: BorderRadius.circular(10),
                       child: InkWell(
                         onTap: () {

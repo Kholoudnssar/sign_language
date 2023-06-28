@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 class profile extends StatefulWidget {
   const profile({super.key});
@@ -7,12 +8,14 @@ class profile extends StatefulWidget {
 }
 
 class _profileState extends State<profile> {
+  TextEditingController username= TextEditingController();
+  TextEditingController email= TextEditingController();
+  TextEditingController password= TextEditingController();
   @override
   Widget build(BuildContext context) {
-    TextEditingController username= TextEditingController();
-    TextEditingController email= TextEditingController();
-    TextEditingController password= TextEditingController();
+
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 85, 133, 145),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.only(top:50.0),
@@ -23,7 +26,7 @@ class _profileState extends State<profile> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
-              color: Colors.cyan[50],
+              color: Color.fromARGB(255, 254, 253, 241),
               borderRadius: BorderRadius.only(topLeft: Radius.circular(40),
               topRight: Radius.circular(40),
               
@@ -76,10 +79,14 @@ class _profileState extends State<profile> {
                       ),
                     ),
                     SizedBox(height: 20.0,),
-                    ElevatedButton(onPressed: (){},
+                    ElevatedButton(onPressed: (){
+
+
+
+                    },
                      child: Text('update'),
                      style: ElevatedButton.styleFrom(
-                      primary: Colors.blue,
+                      primary: Color.fromARGB(255, 85, 133, 145),
                       padding: EdgeInsets.symmetric(horizontal: 25.0,vertical: 20.0),
                       textStyle: TextStyle(
                         fontSize: 25, fontWeight: FontWeight.bold)
@@ -96,7 +103,7 @@ class _profileState extends State<profile> {
           child: Stack(
             children:  [
               ClipOval(
-                child: Image.asset('images/profile.jpg',width: 150,height: 150,fit: BoxFit.cover,),
+                child: Image.asset('assets/images/logo4.jpg',width: 150,height: 150,fit: BoxFit.cover,),
               ),
              Positioned(
               bottom: 5,
@@ -131,4 +138,6 @@ class _profileState extends State<profile> {
         width: 3
       ) );
   }
+
 }
+

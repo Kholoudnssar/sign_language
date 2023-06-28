@@ -19,16 +19,16 @@ class CustomFormTextField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: TextStyle(
-          color: Colors.black,
+          color: Colors.grey,
         ),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.black,
+            color: Color.fromARGB(255, 85, 133, 145),
           ),
         ),
         border: OutlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.black,
+            color:  Color.fromARGB(255, 85, 133, 145),
           ),
         ),
       ),

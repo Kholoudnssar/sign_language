@@ -10,13 +10,18 @@ class CustomButon extends StatelessWidget {
       onTap: onTap ,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Color.fromARGB(255, 85, 133, 145),
           borderRadius: BorderRadius.circular(8),
         ),
         width: double.infinity,
         height: 60,
         child: Center(
-          child: Text(text),
+          child: Text(text,
+            style: TextStyle(color: Colors.white,
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 1),),
+
         ),
       ),
     );

@@ -26,15 +26,18 @@ class _MyHomeState extends State<MyHome> {
     var wedith=MediaQuery.of(context).size.width;
 
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 254, 253, 241) ,// page background
+
+
       drawer: NavigationDrawerWidget(),
       appBar: AppBar(
-        title: const Text('SignBridge'
-          , style: TextStyle(color: Colors.black,
+        backgroundColor: Color.fromARGB(255, 85, 133, 145), // appbar color
+        title: const Text('Home'
+          , style: TextStyle(color: Colors.white,
               fontFamily: 'pacifico',
               fontSize: 25),
         ),
-          backgroundColor: Colors.blue [300] ,
-      ),
+       ),
       body: Padding(
         padding: const EdgeInsets.all(11.0),
         child: Column(
@@ -61,12 +64,17 @@ class _MyHomeState extends State<MyHome> {
                   height: hight*0.6,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: Colors.grey[50],
-                    border: Border.all(width: 8,color: Colors.black12),
+                    color: Color.fromARGB(255, 254, 253, 241), //color for inside box
+                    border: Border.all(width: 8,color:Color.fromARGB(255, 120, 172, 182)), //color for frame
                     borderRadius: BorderRadius.circular(12.0),
                   ),
-                  child: const Text('image should appear here',
-                    style: TextStyle(fontSize: 22),),
+                    child: Text('image should appear here',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 22,
+                          color: Color.fromARGB(255, 53, 86,95 ).withOpacity(0.6) //color to text
+                      ),
+                    )
                 ),
               ),
             Spacer(),
@@ -75,11 +83,11 @@ class _MyHomeState extends State<MyHome> {
                 Expanded(
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue[300], // Background color
+                          backgroundColor: Color.fromARGB(255, 85, 133, 145), // Background buttom color
                         ),
                         onPressed: () => captureImage(source: ImageSource.camera),
                         child: const Text('Capture',
-                          style: TextStyle(color: Colors.black,
+                          style: TextStyle(color: Colors.white,
                               fontFamily: 'pacifico',
                               fontSize: 23),
                         )
@@ -92,11 +100,11 @@ class _MyHomeState extends State<MyHome> {
                 Expanded(
                     child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue[300], // Background color
+                          backgroundColor: Color.fromARGB(255, 85, 133, 145), // Background button color
                         ),
                         onPressed: () => captureImage(source: ImageSource.gallery),
                         child: const Text('upload',
-                          style: TextStyle(color: Colors.black,
+                          style: TextStyle(color: Colors.white,
                               fontFamily: 'pacifico',
                               fontSize: 23),
                         )
@@ -113,7 +121,7 @@ class _MyHomeState extends State<MyHome> {
               visible: (image_url != null),
               child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue[300], // Background color
+                    backgroundColor: Color.fromARGB(255, 85, 133, 145), // Background color
                   ),
                 onPressed: (){
                   Navigator.of(context).push(
@@ -121,7 +129,7 @@ class _MyHomeState extends State<MyHome> {
                   );
                 },
                 child: Text("View result " ,
-                         style: TextStyle(color: Colors.black,
+                         style: TextStyle(color: Colors.white,
                                 fontFamily: 'pacifico',
                           fontSize: 23
                          ),

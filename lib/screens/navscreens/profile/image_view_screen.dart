@@ -6,7 +6,7 @@ class ImageViewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color.fromARGB(255, 254, 253, 241),
       body: PhotoView(
         imageProvider: NetworkImage(
             imageUrl

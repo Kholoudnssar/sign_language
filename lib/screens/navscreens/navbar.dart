@@ -18,7 +18,7 @@ class NavigationDrawerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Material(
-        color: Colors.blue [300],
+        color: Color.fromARGB(255, 120, 172, 182),
         child: ListView(
           // padding: Padding,
           children: [
@@ -32,7 +32,7 @@ class NavigationDrawerWidget extends StatelessWidget {
 
 
             ),
-            Divider(color: Colors.white),
+            Divider(color: Colors.black),
 
             SizedBox(height: 48),
             buildMenuItem( text:'profile',
