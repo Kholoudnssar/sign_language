@@ -1,3 +1,4 @@
+// import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:flutter/cupertino.dart';
 // import 'package:sign_language_app/datdbase/database_utils.dart';
@@ -6,7 +7,7 @@
 //
 // class UserProvider extends ChangeNotifier {
 //   User? firebaseUser;
-//   User_Data user;
+//   User_Data? user;
 //
 //   UserPrvider() {
 //     initMyUser();
@@ -19,7 +20,8 @@
 //
 //   void initMyUser() async {
 //     if (firebaseUser != null) {
-//       user = await DataBase.readUser(firebaseUser?.uid ?? "");
-//     }
+//       User? firebaseUser = await FirebaseAuth.instance.currentUser;
+//       user =await DataBase.readUser(firebaseUser!.uid);
+//         }
 //   }
 // }

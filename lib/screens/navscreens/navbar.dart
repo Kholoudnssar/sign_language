@@ -87,7 +87,7 @@ class NavigationDrawerWidget extends StatelessWidget {
   void selectedItem (BuildContext context,int index){
     switch(index){
       case 0:
-        Navigator.of(context).push(MaterialPageRoute(builder: (context) => profile(),
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => Profile(),
         ));
         break;
       case 1:
