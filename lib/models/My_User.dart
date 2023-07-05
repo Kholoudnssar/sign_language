@@ -2,14 +2,14 @@ class User_Data {
   static const String CollecationName = 'user';
   String id;
   String fName;
-  String lName;
+  String image;
   String userName;
   String email;
 
   User_Data(
       {required this.id,
       required this.fName,
-      required this.lName,
+      required this.image,
       required this.userName,
       required this.email});
 
@@ -17,7 +17,7 @@ class User_Data {
       : this(
           id: json['id'] as String,
           fName: json['fName'] as String,
-          lName: json['lName'] as String,
+          image: json['image'] as String,
           userName: json['userName'] as String,
           email: json['email'] as String,
         );
@@ -26,7 +26,7 @@ class User_Data {
     return {
       'id': id,
       'fName': fName,
-      'lName': lName,
+      'image': image,
       'userName': userName,
       'email': email,
     };

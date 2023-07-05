@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sign_language_app/login_page.dart';
 
+import 'Save.dart';
+
 class WelcomePage extends StatelessWidget {
   static const String roudeName='kk';
   const WelcomePage({super.key});
@@ -87,6 +89,7 @@ class WelcomePage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       child: InkWell(
                         onTap: () {
+                          Saver.saveData(key: 'welecome', value: true);
                           Navigator.push(context, MaterialPageRoute(
                             builder: (context) =>LoginPage() ,
 

@@ -1,29 +1,31 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sign_language_app/resgister_page.dart';
 import 'package:sign_language_app/screens/navscreens/homepage.dart';
 import 'package:sign_language_app/screens/navscreens/navbar.dart';
+import 'package:sign_language_app/user_provider.dart';
 import 'package:sign_language_app/welecomePage.dart';
 import 'package:sign_language_app/widgets/resetPassword.dart';
 
+import 'Save.dart';
 import 'login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  bool isFirstTime = prefs.getBool('isFirstTime') ?? true;
   await Firebase.initializeApp(
   );
-  runApp( MyApp( isFirstTime: isFirstTime,));
+  await Saver.init();
+  runApp(  Provider<UserProvider>(
+      create: (_) => UserProvider(),
+      child: const MyApp( )));
 }
 
 class MyApp extends StatelessWidget {
-  final bool isFirstTime;
-  // const MyApp({super.key});
-  MyApp({required this.isFirstTime});
+  const MyApp({super.key});
 
 // This widget is the root of your application.  
   @override
@@ -38,7 +40,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: botnavbar(),
-      initialRoute:isFirstTime ? WelcomePage.roudeName  : (firbaseuser == null ? LoginPage.id  :MyHome.roudeName),
+      initialRoute: Saver.getData('welecome')==null ? WelcomePage.roudeName  : (firbaseuser == null ? LoginPage.id  :MyHome.roudeName),
       routes: {
         ResetPassword.id:(context)=>ResetPassword(),
         WelcomePage.roudeName:(context)=>WelcomePage(),

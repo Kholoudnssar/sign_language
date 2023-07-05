@@ -43,7 +43,7 @@ class _MyHomeState extends State<MyHome> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            if (imageFile != null)
+             (imageFile != null) ?
               Container(
                 width: wedith*0.9,
                 height: hight*0.6,
@@ -56,7 +56,7 @@ class _MyHomeState extends State<MyHome> {
                 ),
 
               )
-            else
+            :
               Padding(
                 padding: const EdgeInsets.only(top:45),
                 child: Container(
@@ -216,3 +216,5 @@ class _MyHomeState extends State<MyHome> {
       // await imageFile.writeAsBytes(bytes);
 
 }
+
+

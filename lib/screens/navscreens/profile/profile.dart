@@ -1,13 +1,17 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_provider/flutter_provider.dart';
-
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../Provider/user_Provider.dart';
 import '../../../datdbase/database_utils.dart';
 import '../../../models/My_User.dart';
-import '../../../widgets/custom_button.dart';
+import 'dart:io';
 
+import 'package:flutter/foundation.dart';
+import 'package:image_picker/image_picker.dart';
 class Profile extends StatefulWidget {
   const Profile({Key? key}) : super(key: key);
 
@@ -19,7 +23,10 @@ class _ProfileState extends State<Profile> {
   TextEditingController username = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+
   User_Data? model;
+File ? profileImage;
+  final ImagePicker picker = ImagePicker();
 
   @override
   void initState() {
@@ -30,8 +37,21 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
+    // username.text=model!.fName;
+
     User? firebaseUser = FirebaseAuth.instance.currentUser;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 85, 133, 145),
+        title: const Text(
+          'Profile',
+          style: TextStyle(
+            color: Colors.white,
+            fontFamily: 'pacifico',
+            fontSize: 25,
+          ),
+        ),
+      ),
       backgroundColor: Color.fromARGB(255, 85, 133, 145),
       body: SingleChildScrollView(
         child: Container(
@@ -89,8 +109,8 @@ class _ProfileState extends State<Profile> {
                               );
                             },
                           ),
-                          SizedBox(height: 20.0),
-                          TextField(
+                            SizedBox(height: 20.0),
+                            TextField(
                             controller: username,
                             decoration: InputDecoration(
                               labelText: 'Username',
@@ -152,31 +172,71 @@ class _ProfileState extends State<Profile> {
               ),
               Align(
                 alignment: Alignment.topCenter,
-                child: Stack(
-                  children: [
-                    ClipOval(
-                      child: Image.asset(
-                        'assets/images/logo4.jpg',
-                        width: 150,
-                        height: 150,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 5,
-                      right: 15.5,
-                      child: Container(
-                        padding: EdgeInsets.all(5.0),
+                child: Container(
+                  height: 180, // Set the desired height for the profile image
+                  width: 180, // Set the desired width for the profile image
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Container(
                         decoration: BoxDecoration(
-                          color: Colors.blueGrey,
                           shape: BoxShape.circle,
+                          color: Colors.white,
                         ),
-                        child: Icon(Icons.edit, size: 30.0),
+                        child: ClipOval(
+                          child: StreamBuilder<DocumentSnapshot<User_Data>>(
+                            stream: DataBase.readUserFromFirStoreStrem(firebaseUser!.uid),
+                            builder: (
+                                BuildContext context,
+                                AsyncSnapshot<DocumentSnapshot<User_Data>> snapshot,
+                                ) {
+                              if (snapshot.hasError) {
+                                return Text('Error: ${snapshot.error}');
+                              }
+                              if (!snapshot.hasData) {
+                                return Text('No Data');
+                              }
+                              final DocumentSnapshot<User_Data> documentSnapshot = snapshot.data!;
+                              if (!documentSnapshot.exists) {
+                                return Text('Document does not exist');
+                              }
+                              final User_Data user = documentSnapshot.data()!;
+                              return Image.network(
+                                user.image ?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
+                                width: double.infinity,
+                                height: double.infinity,
+                                fit: BoxFit.cover,
+                              );
+                            },
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
+                      Positioned(
+                        bottom: 5,
+                        right: 15.5,
+                        child: Container(
+                          padding: EdgeInsets.all(5.0),
+                          decoration: BoxDecoration(
+                            color: Colors.blueGrey,
+                            shape: BoxShape.circle,
+                          ),
+                          child: InkWell(
+                            onTap: () {
+                              getProfileImage();
+                              profileImageUpload();
+                            },
+                            child: Icon(
+                              Icons.edit,
+                              size: 30.0,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
+
             ],
           ),
         ),
@@ -212,6 +272,7 @@ class _ProfileState extends State<Profile> {
         .get()
         .then((value) {
       model = User_Data.fromJson(value.data()!);
+      // Provider.of<UserProvider>(context).user=;
     });
   }
 
@@ -223,6 +284,46 @@ class _ProfileState extends State<Profile> {
       print("Password can't be changed" + error.toString());
     });
   }
+  Future<void> getProfileImage() async {
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      profileImage = File(pickedFile.path);
+    } else {
+      print('No selected images');
+    }
+  }
+
+  Future<void> profileImageUpload() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      // Handle the case when the user is not authenticated
+      return;
+    }
+
+    final id = user.uid;
+    final timestamp = DateTime.now().millisecondsSinceEpoch.toString();
+    final fileName = '$id-$timestamp.png';
+    final ref = FirebaseStorage.instance.ref('$id/$fileName');
+
+    // Assign the profileImage variable with the desired File object
+    // profileImage = /* Provide the File object for the profile image */;
+
+    try {
+      await ref.putFile(profileImage!);
+      final url = await ref.getDownloadURL();
+
+      await FirebaseFirestore.instance
+          .collection(User_Data.CollecationName) // Replace with your collection name
+          .doc(id)
+          .update({
+        'image': url,
+      });
+    } catch (error) {
+      // Handle the error appropriately
+      print('Error uploading profile image: $error');
+    }
+  }
+
 
   void getEmailFromFirebase(email) async {
     User? firebaseUser = await FirebaseAuth.instance.currentUser;
@@ -242,10 +343,7 @@ class _ProfileState extends State<Profile> {
     });
   }
 
-  GetUser() async {
-    User? firebaseUser = await FirebaseAuth.instance.currentUser;
-    model = await DataBase.readUser(firebaseUser!.uid);
-  }
+
 
   void ClearForm() {
     username.clear();

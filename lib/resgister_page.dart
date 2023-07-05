@@ -21,10 +21,11 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  String? firstname;
-  String? secondname;
+  String? fname;
+  String? userName;
   String? email;
   String? password;
+  String? image;
 
   bool isLoading = false;
 
@@ -82,7 +83,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 CustomFormTextField(
                   onChanged: (data) {
-                    firstname = data;
+                    fname = data;
                   },
                   hintText: 'First name',
                 ),
@@ -91,9 +92,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 CustomFormTextField(
                   onChanged: (data) {
-                    secondname = data;
+                    userName = data;
                   },
-                  hintText: 'Laste name',
+                  hintText: 'User Name',
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height*0.01,
@@ -180,10 +181,12 @@ class _RegisterPageState extends State<RegisterPage> {
         .createUserWithEmailAndPassword(email: email!, password: password!);
     User_Data user = User_Data(
         id: credential.user!.uid,
-        fName: 'fName',
-        lName: 'lName',
-        userName: 'userName',
+        fName: fname!,
+        image:image?? 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png',
+        userName: userName!,
         email: email!);
     DataBase.creatDBforUser(user);
   }
 }
+
+
